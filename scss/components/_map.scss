@@ -1,0 +1,29 @@
+#map {
+	height: rem-calc(503);
+}
+#map-adderess {
+	@extend .show-for-large-up;
+}
+.motel-address {
+	width: rem-calc(264);
+	padding: rem-calc(20);
+	@extend .bg-primary;
+	@extend .abs;
+	left: rem-calc(10);
+	bottom: rem-calc(-100);
+	border-radius: 6px;
+}
+#map-btns {
+	@extend .abs;
+	bottom: rem-calc(-80);
+	left: rem-calc(320);
+
+	a:last-child {
+		margin-left: rem-calc(30);
+	}
+}
+@media #{$large-up} {
+	#map-section {
+		padding-bottom: rem-calc(200);
+	}
+}

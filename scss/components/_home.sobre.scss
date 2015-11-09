@@ -1,0 +1,42 @@
+#about-section {
+	a {
+		height: rem-calc(450);
+		padding: rem-calc(40 20);
+		border-top: 5px solid transparent;
+		border-radius: 6px 6px 0 0;
+
+		&:hover {
+			background-color: #fff;
+			border-top-color: $primary-color;
+		}
+
+		header {
+			&:after {
+				content: "";
+				display: inline-block;
+				float: left;
+				width: 30%;
+				border-bottom: 1px solid #dedede;
+				margin: rem-calc(10 0);
+			}
+		}
+
+		h3 {
+			span {
+				@extend .small-14;
+				@extend .left;
+				@extend .lh-1;
+				font-size: rem-calc(22);
+			}
+		}
+
+		.link {
+			bottom: rem-calc(20);
+			left: 0;
+			padding: rem-calc(0 20);
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}

@@ -1,0 +1,28 @@
+@media #{$small-only} {
+  .row {
+    max-width: rem-calc(640);
+  }
+}
+
+@media #{$medium-only} {
+  .row {
+    width: rem-calc(768);
+    max-width: none;
+  }
+}
+
+@media #{$medium-down} {
+  //Para o menu offcanvas aparecer
+  body {
+    &.move {
+      @include translateX(rem-calc(-250));
+    }
+  }
+}
+
+@media #{$large-only} {
+  .row {
+    width: rem-calc(1280);
+    max-width: none;
+  }
+}

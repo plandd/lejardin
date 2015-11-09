@@ -1,0 +1,30 @@
+body {
+  @extend %transition;
+  overflow-x: hidden;
+  background-image: url('images/padrao_bg.jpg');
+  background-repeat: repeat;
+	-moz-transform: none !important;
+	-ms-transform: none !important;
+	-webkit-transform: none !important;
+	transform: none !important;
+}
+figure {
+	margin: 0;
+}
+a {
+	@extend %transition;
+  &:hover {
+	@extend .secondary;
+  }
+}
+#jpreBar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 2px;
+	background-color: $secondary-color;
+	z-index: 99999;
+}
+#wrapper {
+	height: 100%;
+}

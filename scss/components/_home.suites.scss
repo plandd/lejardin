@@ -1,0 +1,72 @@
+#suites {
+	header {
+		span {
+			@extend .small-14;
+			@extend .left;
+			@extend .lh-1;
+			@extend .d-iblock;
+			font-size: rem-calc(24);
+		}
+	}
+}
+#suites-carousel {
+	figure {
+		> a {
+			height: rem-calc(220);
+			border-radius: 8px;
+			&:hover, &:focus {
+				@extend .white;
+			}
+		}
+	}
+}
+.mask-secondary {
+	background-color: rgba($secondary-color,.8);
+	@extend %full-height;
+	@extend %transition;
+	opacity: 0;
+	border-radius: 8px;
+	
+	span {
+		font-size: rem-calc(18);
+	}
+	span[class^="icon-"] {
+		font-size: rem-calc(40);
+	}
+	.d-table-cell {
+		@extend %transition;
+		@include translateY(-20px);
+		opacity: 0;
+	}
+
+	&:hover {
+		opacity: 1;
+		.d-table-cell {
+			@include translateY(0);
+			opacity: 1;
+		}
+	}
+}
+.nav-caroulsel {
+    height: 472px;
+    z-index: 99;
+    top: 0;
+    font-size: 40px;
+}
+.next-roll {
+	right: rem-calc(-40);
+}
+.prev-roll {
+	left: rem-calc(-40);
+}
+.a-suite {
+	display: none;
+	&.active {
+		display: block;
+	}
+}
+@media #{$medium-down} {
+	.nav-caroulsel {
+		display: none;
+	}
+}

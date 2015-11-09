@@ -1,0 +1,78 @@
+<?php
+/**
+  * Template Name: Contato
+  * @package WordPress
+  */
+  get_header();
+?>
+
+  <section id="contato" class="section-60 small-14 left">
+    <div class="row text-center">
+
+      <div class="small-14 large-8 d-iblock">
+      
+        <header class="divide-40 column text-center">
+          <h2 class="secondary font-lite divide-10">Fale Conosco</h2>
+          <h5 class="vapor small-14 d-iblock">
+            Fale conosco através deste canal enviando para nós suas dúvidas, mensagens e sugestões ou venha nos fazer uma visita. Esperamos vê-lo em breve! 
+          </h5>
+        </header>
+
+        <div class="form-contato small-14 medium-10 columns">
+          
+          <form action="" method="post" class="small-14 left">
+            <p class="small-14 left no-margin">
+              <label for="nome" class="primary left">Nome:</label>
+              <input type="text" name="nome" id="nome" class="left" placeholder="DIGITE SEU NOME" title="Seu nome" required>
+            </p>
+
+            <p class="small-14 left no-margin">
+              <label for="email" class="primary left">E-mail:</label>
+              <input type="email" name="email" id="email" class="left" placeholder="DIGITE SEU E-MAIL" title="Seu nome" required>
+            </p>
+
+            <p class="small-14 left no-margin">
+              <label class="primary left">Sexo:</label>
+              <input type="radio" id="masculino" name="sexo" class="left"><label class="iron left sexo" for="masculino">Masculino</label>
+              <input type="radio" id="feminino" name="sexo" class="left"><label class="iron left sexo" for="feminino">Feminino</label>
+            </p>
+
+            <p class="small-14 left no-margin">
+              <label for="msg" class="primary left">Mensagem:</label>
+              <textarea name="mensagem" id="msg" cols="30" rows="5" placeholder="DIGITE SUA MENSAGEM"></textarea>
+            </p>
+
+            <p class="small-14 left no-margin">
+              <span class="iron left font-small"><input type="checkbox" name="newsletter"> Quero receber informes e novidades do Le Jardin</span>
+            </p>
+
+            <p class="small-14 left no-margin">
+              <button type="submit" class="button-primary">Enviar</button>
+            </p>
+          </form>
+
+        </div>
+
+        <div class="small-14 medium-4 columns form-info show-for-medium-up">
+          <h5 class="primary font-bold">Motel Le Jardin</h5>
+          <div class="small-14 left text-left">
+            <p class="font-small primary">
+              End.: Av. Otavio Alves de Lima, 45<br>
+              Bairro do Limão São Paulo - SP<br>
+              Fone: +55 (11) 3858-2654<br>
+              Email: <a href="mailto:correio@lejardin.com.br" class="secondary" title="Nosso email">correio@lejardin.com.br</a>
+            </p>
+          </div>
+          
+        </div>
+
+      </div>
+
+    </div>
+    
+  </section>
+
+<?php
+  include get_stylesheet_directory() . "/includes/sections/cliente-vip.php";
+  get_footer();
+?>

@@ -1,0 +1,43 @@
+.form-contato {
+	input[type="text"],input[type="email"] {
+		border: none;
+		width: rem-calc(200);
+	}	
+	input[type="checkbox"] {
+		@include translateY(rem-calc(3));
+	}
+	textarea {
+		border: none;
+		width: rem-calc(220);
+	}
+	input[type="radio"] {
+		@include scale(0.6);
+		margin-top: rem-calc(13);
+	}
+	label {
+		margin-right: rem-calc(6);
+		@extend .text-up;
+		&:not(.sexo) {
+			width: rem-calc(160);
+			@extend .text-right;
+		}
+	}
+	span,label {
+		line-height: rem-calc(37);
+	}
+}
+::-webkit-input-placeholder {
+   color: #ccc;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #ccc;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #ccc;  
+}
+
+:-ms-input-placeholder {  
+   color: #ccc;  
+}

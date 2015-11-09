@@ -1,0 +1,107 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?50a1kk');
+	src:url('fonts/icomoon.eot?50a1kk#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?50a1kk') format('truetype'),
+		url('fonts/icomoon.woff?50a1kk') format('woff'),
+		url('fonts/icomoon.svg?50a1kk#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-lejardim_calendario:before {
+	content: "\e800";
+}
+.icon-lejardim_down_2:before {
+	content: "\e801";
+}
+.icon-lejardim_down_3:before {
+	content: "\e802";
+}
+.icon-lejardim_facebook:before {
+	content: "\e803";
+}
+.icon-lejardim_fechar:before {
+	content: "\e804";
+}
+.icon-lejardim_home:before {
+	content: "\e805";
+}
+.icon-lejardim_insta:before {
+	content: "\e806";
+}
+.icon-lejardim_left_2:before {
+	content: "\e807";
+}
+.icon-lejardim_left_3:before {
+	content: "\e808";
+}
+.icon-lejardim_linkedin:before {
+	content: "\e809";
+}
+.icon-lejardim_local:before {
+	content: "\e80a";
+}
+.icon-lejardim_logo_plan:before {
+	content: "\e80b";
+}
+.icon-lejardim_mail:before {
+	content: "\e80c";
+}
+.icon-lejardim_mail2:before {
+	content: "\e80d";
+}
+.icon-lejardim_mais:before {
+	content: "\e80e";
+}
+.icon-lejardim_mensagem:before {
+	content: "\e80f";
+}
+.icon-lejardim_menu:before {
+	content: "\e810";
+}
+.icon-lejardim_perfil:before {
+	content: "\e811";
+}
+.icon-lejardim_phone:before {
+	content: "\e812";
+}
+.icon-lejardim_right_2:before {
+	content: "\e813";
+}
+.icon-lejardim_right_3:before {
+	content: "\e814";
+}
+.icon-lejardim_tempo:before {
+	content: "\e815";
+}
+.icon-lejardim_ticket-27:before {
+	content: "\e816";
+}
+.icon-lejardim_twitter:before {
+	content: "\e817";
+}
+.icon-lejardim_up_2:before {
+	content: "\e818";
+}
+.icon-lejardim_up_3:before {
+	content: "\e819";
+}
+.icon-lejardim_youtube:before {
+	content: "\e81a";
+}
+

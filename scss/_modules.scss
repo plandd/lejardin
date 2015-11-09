@@ -1,0 +1,207 @@
+//placeholders
+%full-height {
+	height: 100%;
+}
+%transition {
+	@include transition-property(all);
+  	@include transition-duration(.2s);
+  	@include transition-timing-function(ease-in);
+}
+
+//font-weight
+.font-lite {
+  font-weight: 300;
+}
+.font-normal {
+  font-weight: 400;
+}
+.font-semi-bold {
+  font-weight: 600;
+}
+.font-bold {
+  font-weight: 700;
+}
+
+//font-size
+.font-small {
+  font-size: rem-calc(12);
+}
+.font-medium {
+  font-size: rem-calc(14);
+}
+.font-large {
+  font-size: rem-calc(18);
+}
+
+//font box
+.text-up {
+  text-transform: uppercase;
+}
+
+//cores
+.primary {
+  color: $primary-color;
+}
+.secondary {
+  color: $secondary-color;
+}
+.success {
+  color: $success-color;
+}
+.vapor {
+  color: $vapor;
+}
+.white {
+  color: #fff;
+}
+.iron {
+  color: $iron;
+}
+
+//backgrounds
+.bg-primary {
+  background-color: $primary-color;
+}
+.bg-secondary {
+  background-color: $secondary-color;
+}
+.bg-success {
+  background-color: $success-color;
+}
+.bg-iron {
+  background-color: $iron;
+}
+.bg-vapor {
+  background-color: #f6f6f6;
+}
+.bg-cover {
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+//altura de linha
+.lh-14 {
+  line-height: 1.4;
+}
+.lh-12 {
+  line-height: 1.2;
+}
+.lh-1 {
+  line-height: 1;
+}
+
+//Margens
+.no-margin {
+	margin: 0 !important;
+}
+%margin-extends {
+  @extend .small-14;
+  @extend .left;
+}
+.divide-10 {
+  @extend %margin-extends;
+  margin-bottom: 10px;
+}
+.divide-20 {
+  @extend %margin-extends;
+  margin-bottom: 20px;
+}
+.divide-40 {
+  @extend %margin-extends;
+  margin-bottom: 40px;
+}
+
+//comportmanetos
+.less-opacity {
+	@extend %transition;
+	&:hover {
+		opacity: .6;
+	}
+}
+
+.rel {
+  position: relative;
+}
+.abs {
+  position: absolute;
+}
+.def-pos {
+  left: 0;
+  top: 0;
+}
+
+//displays
+.d-block {
+	display: block;
+}
+.d-table {
+	display: table;
+}
+.d-table-cell {
+	display: table-cell;
+  	vertical-align: middle;
+}
+.d-iblock {
+  display: inline-block;
+}
+.show-onload {
+  @extend %transition;
+  opacity: 0;
+  visibility: hidden;
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+//containers
+.section-60 {
+  padding-top: rem-calc(60);
+  padding-bottom: rem-calc(60);
+}
+
+//botoes
+%button-gui {
+  display: inline-block;
+  padding: rem-calc(6 40);
+  border-radius: 4px;
+  @extend .text-up;
+  @extend %transition;
+}
+
+.button-white {
+  @extend %button-gui;
+
+  background-color: white;
+  color: $secondary-color;
+  @extend .font-semi-bold;
+
+  &:hover {
+    background-color: $secondary-color;
+    color: #fff;
+  }
+}
+
+.button-primary {
+  @extend %button-gui;
+
+  background-color: $secondary-color;
+  color: white;
+  //@extend .font-lite;
+
+  &:hover {
+    background-color: white;
+    color: $secondary-color;
+  }
+}
+
+.button-glass {
+  @extend %button-gui;
+  border: 1px solid white;
+
+  &:hover {
+    border-color: $secondary-color;
+    @extend .secondary;
+  }
+}

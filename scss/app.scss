@@ -1,11 +1,13 @@
+@import "compass";
+@import "fonts";
 @import "settings";
-@import "foundation";
+//@import "foundation";
 
 // Or selectively include components
-// @import
+ @import
 //   "foundation/components/accordion",
 //   "foundation/components/alert-boxes",
-//   "foundation/components/block-grid",
+   "foundation/components/block-grid",
 //   "foundation/components/breadcrumbs",
 //   "foundation/components/button-groups",
 //   "foundation/components/buttons",
@@ -13,9 +15,9 @@
 //   "foundation/components/dropdown",
 //   "foundation/components/dropdown-buttons",
 //   "foundation/components/flex-video",
-//   "foundation/components/forms",
-//   "foundation/components/grid",
-//   "foundation/components/inline-lists",
+   "foundation/components/forms",
+   "foundation/components/grid",
+   "foundation/components/inline-lists",
 //   "foundation/components/joyride",
 //   "foundation/components/keystrokes",
 //   "foundation/components/labels",
@@ -25,7 +27,7 @@
 //   "foundation/components/panels",
 //   "foundation/components/pricing-tables",
 //   "foundation/components/progress-bars",
-//   "foundation/components/reveal",
+   "foundation/components/reveal",
 //   "foundation/components/side-nav",
 //   "foundation/components/split-buttons",
 //   "foundation/components/sub-nav",
@@ -35,6 +37,25 @@
 //   "foundation/components/thumbs",
 //   "foundation/components/tooltips",
 //   "foundation/components/top-bar",
-//   "foundation/components/type",
-//   "foundation/components/offcanvas",
-//   "foundation/components/visibility";
+   "foundation/components/type",
+   "foundation/components/offcanvas",
+   "foundation/components/visibility";
+
+
+@import "modules";
+@import "bases";
+
+//Componentes
+@import "components/header";
+@import "components/home.slider";
+@import "components/home.suites";
+@import "components/home.sobre";
+@import "components/home.depoimentos";
+@import "components/home.newsletter";
+@import "components/suites.slide";
+@import "components/page.contato";
+@import "components/user-bar";
+@import "components/map";
+@import "components/cliente.vip";
+@import "components/footer";
+@import "media-queries";

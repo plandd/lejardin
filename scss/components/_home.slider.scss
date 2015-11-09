@@ -1,0 +1,149 @@
+%slider-h {
+  height: rem-calc(800);
+}
+
+.load-slide {
+  @extend %slider-h;
+  z-index: 9;
+}
+
+#home-slider {
+  .row {
+    @extend %slider-h;
+    @extend .d-table;
+  }
+  nav {
+    @extend %slider-h;
+    @extend .rel;
+  }
+  background-color: #eaeaea;
+  @extend .rel;
+
+  figure {
+    @extend %full-height;
+  }
+  hgroup {
+    @extend %transition;
+    @include translateX(rem-calc(-30));
+    opacity: 0;
+
+    &.active {
+      @include translateX(0);
+      opacity: 1;
+    }
+  }
+}
+.grad-mask {
+  z-index: 99;
+  background-color: rgba(#000, .2);
+  @extend %full-height;
+
+  &:hover {
+    background-color: rgba(#000, .4);
+  }
+}
+
+.nav-slider {
+  @extend %full-height;
+  color: white;
+  z-index: 997;
+  font-size: rem-calc(46);
+  opacity: .8;
+  top: 0;
+  &:hover {
+    opacity: 1;
+  }
+
+  &.prev-slider {
+    left: 0;
+  }
+  &.next-slider {
+    right: 0;
+  }
+  &:focus {
+    color: #fff;
+  }
+}
+
+.slider-pager {
+  @include translateY(rem-calc(-120));
+  @extend .rel;
+  z-index: 997;
+  i {
+    @extend %transition;
+    @extend .d-iblock;
+    margin: rem-calc(0 5);
+    width: rem-calc(14);
+    height: rem-calc(14);
+    background-color: #fff;
+    border: 2px solid white;
+    border-radius: 100%;
+    cursor: pointer;
+
+    &.cycle-pager-active {
+      background-color: transparent;
+      @include scale(1.5);
+    }
+  }
+}
+
+@media #{$small-only} {
+  #home-slider {
+    .row,nav { height: rem-calc(400); }
+  }
+  .slider-pager {
+    @include translateY(rem-calc(-40));
+  }
+  .load-slide {
+    height: rem-calc(400);
+  }
+}
+
+@media #{$medium-down} {
+  #home-slider {
+    hgroup {
+      h2 {
+        &:after {
+          content: "";
+          width: 50%;
+          float: left;
+          border-bottom: 1px solid white;
+          display: inline-block;
+          margin: rem-calc(20 0);
+          margin-left: 25%;
+        }
+      }
+    }
+  }
+  .nav-slider {
+    display: none;
+  }
+}
+
+@media #{$medium-only} {
+  #home-slider {
+    .row,nav { height: rem-calc(600); }
+  }
+  .load-slide {
+    height: rem-calc(600);
+  }
+}
+
+@media #{$large-up} {
+  #home-slider {
+    overflow: hidden;
+    hgroup {
+      h2 {
+        &:after {
+          content: "";
+          display: block;
+          width: rem-calc(110);
+          border-bottom: 1px solid white;
+          float: right;
+          margin: rem-calc(20 0);
+        }
+      }
+    }
+  }
+
+}
