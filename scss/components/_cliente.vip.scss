@@ -1,3 +1,9 @@
 .vip-header {
 	border-radius: 8px;
 }
+.promo-voucher {
+	article {
+		padding: rem-calc(16 10);
+		border: 2px dashed $secondary-color;
+	}
+}

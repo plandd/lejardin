@@ -29,8 +29,9 @@
           data-cycle-swipe-fx=scrollHorz
         >
         <?php
-          $promos = get_field('promovip_lista', 'option');
+          $promos = get_field('promo_lista', 'option');
           foreach ($promos as $promo):
+            $promo_id = uniqid();
         ?>
           <figure class="small-14 left promo-item rel">
             <header class="left text-left">
@@ -38,22 +39,51 @@
               <h5 class="secondary font-bold text-up no-margin">Em aberto</h5>
             </header>
 
-            <a href="#" class="img small-14 large-12 right rel" title="<?php echo $promo['promo_nome']; ?>" data-thumb="<?php echo $promo['promo_img']; ?>">
+            <a href="#" data-reveal-id="promo-<?php echo $promo_id; ?>" class="img small-14 large-12 right rel" title="<?php echo $promo['promo_nome']; ?>" data-thumb="<?php echo $promo['promo_img']; ?>">
               <p>Aniversário mais gostoso</p>
             </a>
             
             <figcaption class="small-14 large-10 text-left right">
               <div class="divide-10"></div>
               <p class="vapor no-margin"><?php echo $promo['promo_desc']; ?></p>
-              <p class=""><a href="#" class="button-primary no-margin" data-promo>Imprimir voucher</a></p>
+              <p class=""><a href="#" data-reveal-id="promo-<?php echo $promo_id; ?>" class="button-primary no-margin" data-promo>Imprimir voucher</a></p>
             </figcaption>
 
-            <a href="#" class="promo-icon d-table abs" title="">
+            <a href="#" data-reveal-id="promo-<?php echo $promo_id; ?>" class="promo-icon d-table abs" title="">
               <span class="d-table-cell small-14 text-center">
                 <h1 class="icon-lejardim_calendario vapor"></h1>
                 <h6 class="no-margin secondary text-up font-bold"><?php echo $promo['promo_nome']; ?></h6>
               </span>
             </a>
+
+            <div id="promo-<?php echo $promo_id; ?>" class="reveal-modal medium promo-voucher" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+              <div class="small-14 left">
+                <header class="divide-40 text-center bg-secondary vip-header">
+                  <h2 class="white">Voucher para a esta promoção</h2>
+                </header>
+
+                <article class="small-14 left text-center">
+                  <h4 class="primary text-up">Nome da promoção</h4>
+                  <h5 class="primary">Descrição: <?php echo $promo['promo_desc']; ?></h5>
+                  <?php
+                    if($promo['promo_regra'])
+                      printf('<p class="secondary no-margin font-medium">Condições: %s</p>',$promo['promo_regra']);
+
+                     if($promo['promo_validade'])
+                      printf('<p class="secondary no-margin font-medium">Validade: %s</p>',$promo['promo_validade']);
+                  ?>
+                </article>
+
+                <div class="small-14 left text-center">
+                  <div class="divide-20"></div>
+                  <p class="font-medium vapor">Imprima seu voucher e apresente na entrada do motel</p>
+                  <p class="no-margin"><a href="#" class="button-primary no-margin" data-voucher="<?php echo $promo['promo_nome']; ?>">Imprimir voucher</a></p>
+                </div>
+                
+              </div>
+              <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+            </div>
+
           </figure>
         <?php
           endforeach;
@@ -94,6 +124,7 @@
         <?php
           $promos = get_field('promovip_lista', 'option');
           foreach ($promos as $promo):
+            $promo_id = uniqid();
         ?>
           <figure class="small-14 left promo-item rel">
             <header class="left text-left">
@@ -101,22 +132,54 @@
               <h5 class="secondary font-bold text-up no-margin">Cliente VIP</h5>
             </header>
 
-            <a href="#" class="img small-14 large-12 right rel" title="<?php echo $promo['promovip_nome']; ?>" data-thumb="<?php echo $promo['promovip_img']; ?>">
+            <a href="#" data-reveal-id="promo-<?php echo $promo_id; ?>" class="img small-14 large-12 right rel" title="<?php echo $promo['promovip_nome']; ?>" data-thumb="<?php echo $promo['promovip_img']; ?>">
               <p>Aniversário mais gostoso</p>
             </a>
             
             <figcaption class="small-14 large-10 text-left right">
               <div class="divide-10"></div>
               <p class="vapor no-margin"><?php echo $promo['promovip_desc']; ?></p>
-              <p class=""><a href="#" class="button-primary no-margin" data-promovip>Imprimir voucher</a></p>
+              <p class=""><a href="#" data-reveal-id="promo-<?php echo $promo_id; ?>" class="button-primary no-margin" data-promovip>Imprimir voucher</a></p>
             </figcaption>
 
-            <a href="#" class="promo-icon d-table abs" title="">
+            <a href="#" data-reveal-id="promo-<?php echo $promo_id; ?>" class="promo-icon d-table abs" title="">
               <span class="d-table-cell small-14 text-center">
                 <h1 class="icon-lejardim_calendario vapor"></h1>
                 <h6 class="no-margin secondary text-up font-bold"><?php echo $promo['promovip_nome']; ?></h6>
               </span>
             </a>
+
+            <div id="promo-<?php echo $promo_id; ?>" class="reveal-modal medium promo-voucher" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+              <div class="small-14 left voucher-info">
+                <header class="divide-40 text-center bg-secondary vip-header">
+                  <h2 class="white">Voucher para a esta promoção</h2>
+                </header>
+
+                <article class="small-14 left text-center">
+                  <h4 class="primary text-up">Nome da promoção</h4>
+                  <h5 class="primary">Descrição: <?php echo $promo['promo_desc']; ?></h5>
+                  <?php
+                    if($promo['promo_regra'])
+                      printf('<p class="secondary no-margin font-medium">Condições: %s</p>',$promo['promo_regra']);
+
+                     if($promo['promo_validade'])
+                      printf('<p class="secondary no-margin font-medium">Validade: %s</p>',$promo['promo_validade']);
+                  ?>
+                </article>
+
+                <div class="small-14 left text-center">
+                  <div class="divide-20"></div>
+                  <p class="font-medium vapor">Para receber seu voucher, insira o email cadastrado no campo abaixo:</p>
+                  <p class="no-margin">
+                    <form novalidate="novalidate" class="small-14 large-10 large-offset-2 columns text-center req-vip-voucher">
+                      <input type="email" title="Seu email" name="email" placeholder="Digite seu email aqui" required>
+                      <a href="#" class="button-primary" data-vouchervip="<?php echo $promo['promo_nome']; ?>">Gerar voucher</a>
+                    </form>
+                  </p>
+                </div>
+              </div>
+              <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+            </div>
           </figure>
         <?php
           endforeach;

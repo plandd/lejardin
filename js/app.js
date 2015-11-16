@@ -192,6 +192,86 @@ $('li','.site-menu').each(function (i) {
         });
     });
 
+    //gerar voucher pra promo aberta
+    $('a[data-voucher]').on('click',function(e) {
+        e.preventDefault();
+        var dt = $(this).data('voucher');
+
+        $.ajax({
+            url: getData.ajaxDir,
+            dataType: 'html',
+            data: {
+                action: 'plandd_voucher',
+                promo: dt,
+                tipo: "Promoção aberta"
+            },
+            type: 'GET',
+            beforeSend: function() {
+                console.log('enviado');
+            },
+            complete: function() {
+                console.log('completo');
+            },
+            success: function(data) {
+                if(data) {
+                    window.location.href = data;
+                }
+            }
+        });
+
+    });
+
+    function generate_voucher_vip() {
+        $('a[data-vouchervip]').on('click',function(e) {
+            e.preventDefault();
+            var dt = $(this).data('vouchervip'),
+                email = $(this).siblings('input[type="email"]').val(),
+                formEmail = $(this).parents('div[data-reveal]').find('.voucher-info'),
+                formID = $(this).parents('div[data-reveal]'),
+                formHTML = $(this).parents('div[data-reveal]').find('.voucher-info').html();
+
+            $.ajax({
+                url: getData.ajaxDir,
+                dataType: 'html',
+                data: {
+                    action: 'plandd_voucher_vip',
+                    promo: dt,
+                    tipo: "Promoção para clientes VIP",
+                    form_data: email
+                },
+                type: 'GET',
+                beforeSend: function() {
+                    console.log('enviado');
+                },
+                complete: function() {
+                    console.log('completo');
+                },
+                success: function(data) {
+                    generate_voucher_vip();
+
+                    if(data !== "false") {
+                        window.location.href = data;
+                    } else {
+                        formEmail.html('<header class="divide-40 text-center bg-secondary vip-header"> <h2 class="white">Voucher Cliente VIP</h2></header><h4 class="primary small-14 left text-center">O e-mail cadastrado não se encontra em nossos registros.</h4><p class="vapor">Pode ter ocorrido os seguintes fatores:</p><p class="font-bold vapor no-margin">1) Você preencheu incorretamente seu email</p><p class="font-lite font-small vapor divide-10">Neste caso, favor retornar e preencher corretamente:</p><p><a href="#" class="button-secondary" data-closer>Retornar</a></p><p class="font-bold vapor no-margin">2) O e-mail preenchido não é o mesmo usado em seu cadastramento VIP</p><p class="font-lite font-small vapor divide-10">Neste caso, favor retornar e preencher com o email correto:</p><p><a href="#" class="button-secondary" data-closer>Retornar</a></p><p class="font-bold vapor no-margin">3) Você não é um cliente VIP do Le Jardin</p><p class="font-lite font-small vapor divide-10">Neste caso, aproveite e faça já o seu cadastro VIP</p><p class="font-bold secondary">É muito fácil e totalmente grátis!</p><p><a href="#" class="button-primary" data-cadastro>Quero ser cliente VIP</a></p>');
+                            
+                        $('a[data-cadastro]').click(function(e) {
+                            e.preventDefault();
+                            window.location.href = getData.cadastroVip;
+                        });
+
+                        $('a[data-closer]').on('click', function(e) {
+                          e.preventDefault();
+                          //formID.foundation('reveal', 'close');
+                          formEmail.html(formHTML);
+                          generate_voucher_vip();
+                        });
+                    }
+                }
+            });
+        });  
+    };
+    generate_voucher_vip();
+
     function send_form_vip() {
         $("#form-vip").on("submit",function(e) {
             e.preventDefault();
@@ -220,6 +300,31 @@ $('li','.site-menu').each(function (i) {
             });
         });
     };
+
+    function insertVIPhtml() {
+        $('a[data-promovip]').on('click',function(e) {
+            var formEmail = $(this).parents('div[data-reveal]').find('.voucher-info');
+            $.ajax({
+                url: getData.ajaxDir,
+                dataType: 'html',
+                data: {
+                    action: 'cliente_vip_voucher_html'
+                },
+                type: 'GET',
+                beforeSend: function() {
+                    console.log('enviado');
+                },
+                complete: function() {
+                    console.log('completo');
+                },
+                success: function(data) {
+                    if(data == 'true') {
+                        formEmail.html(data);
+                    }
+                }
+            });
+        });
+    }
     
 })();
 

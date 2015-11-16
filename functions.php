@@ -1,5 +1,5 @@
 <?php
-define('THEME_VERSION', '1.0.1');
+define('THEME_VERSION', '1.0.2');
 define('THEME_ICON', get_stylesheet_directory_uri() . '/images/icon.png');
 error_reporting(E_ERROR | E_PARSE);
 
@@ -28,7 +28,7 @@ function plandd_acf_dir( $dir ) {
  * (custom meta post)
  */
 include_once( get_stylesheet_directory() . '/includes/acf-pro/acf.php' );
-//define( 'ACF_LITE' , true );
+define( 'ACF_LITE' , true );
 //include_once( get_stylesheet_directory() . '/includes/acf/preconfig.php' );
 
 if( function_exists('acf_add_options_page') ) {
@@ -146,6 +146,11 @@ include_once( get_stylesheet_directory() . '/includes/post-types/suites.php' );
  * */
 include_once( get_stylesheet_directory() . '/includes/post-types/cliente-vip.php' );
 
+/**
+ * CPT Voucher
+ * */
+include_once( get_stylesheet_directory() . '/includes/post-types/voucher.php' );
+
 /*
     Icones para post-types
     (http://melchoyce.github.io/dashicons/)
@@ -160,6 +165,9 @@ function add_menu_icons_styles(){
 }
 #menu-posts-vip div.wp-menu-image:before {
   content: "\f338";
+}
+#menu-posts-voucher div.wp-menu-image:before {
+  content: "\f524";
 }
 </style>
  
@@ -363,4 +371,63 @@ function show_pending_number( $menu ) {
     return $menu;
 }
 add_filter( 'add_menu_classes', 'show_pending_number');
+
+//Voucher promoção aberta
+add_action('wp_ajax_nopriv_plandd_voucher', 'plandd_voucher');
+add_action('wp_ajax_plandd_voucher', 'plandd_voucher');
+
+function plandd_voucher() {
+  $promo = $_GET['promo'];
+  $tipo = $_GET['tipo'];
+  $id_a = uniqid();
+  $id_b = uniqid();
+  $voucher = $id_a . "&" . $id_b;
+
+  $contact_id = wp_insert_post( array(
+    "post_title" => $voucher,
+    "post_type" => 'voucher',
+    "post_status" => 'publish'
+  ));
+  update_field('voucher_nome', $promo, $contact_id);
+  update_field('voucher_tipo', $tipo, $contact_id);
+
+  $page = get_page_by_title("Voucher individual");
+
+  echo get_page_link( $page->ID ) . "?voucher=" . $voucher;
+
+  exit();
+}
+
+//Voucher promoção vips
+add_action('wp_ajax_nopriv_plandd_voucher_vip', 'plandd_voucher_vip');
+add_action('wp_ajax_plandd_voucher_vip', 'plandd_voucher_vip');
+
+function plandd_voucher_vip() {
+  $promo = $_GET['promo'];
+  $tipo = $_GET['tipo'];
+  $email = $_GET['form_data'];
+  $id_a = uniqid();
+  $id_b = uniqid();
+  $voucher = $id_a . "&" . $id_b;
+
+  //$vip = get_page_by_title( $email, $output, $post_type );
+  $vip = $post_exists = post_exists($email);
+
+  if($vip) {
+    $contact_id = wp_insert_post( array(
+      "post_title" => $voucher . '-' . $email,
+      "post_type" => 'voucher',
+      "post_status" => 'publish'
+    ));
+    update_field('voucher_nome', $promo, $contact_id);
+    update_field('voucher_tipo', $tipo, $contact_id);
+
+    $page = get_page_by_title("Voucher individual");
+    echo get_page_link( $page->ID ) . "?voucher=" . $voucher;
+  } else {
+    echo "false";
+  }
+
+  exit();
+}
 ?>

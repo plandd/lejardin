@@ -6,11 +6,13 @@
     <title><?php bloginfo('name'); ?> | <?php is_home()?bloginfo('description'):wp_title(''); ?></title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,600' rel='stylesheet' type='text/css'>
     <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB664XOo1V2z76RD87sMi4b4nAM1JzKthg&sensor=false'></script>
+    <?php $page_cadastro = get_page_by_title('Cadastro VIP'); ?>
     <script>
       //<![CDATA[
       var getData = {
         'urlDir':'<?php bloginfo('template_directory');?>/',
-        'ajaxDir':'<?php echo stripslashes(get_admin_url()).'admin-ajax.php';?>'
+        'ajaxDir':'<?php echo stripslashes(get_admin_url()).'admin-ajax.php';?>',
+        'cadastroVip': '<?php echo get_page_link($page_cadastro->ID); ?>'
       }
       //]]>
     </script>

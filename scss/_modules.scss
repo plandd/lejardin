@@ -196,6 +196,19 @@
   }
 }
 
+.button-secondary {
+  @extend %button-gui;
+
+  background-color: $primary-color;
+  color: white;
+  //@extend .font-lite;
+
+  &:hover {
+    background-color: white;
+    color: $primary-color;
+  }
+}
+
 .button-glass {
   @extend %button-gui;
   border: 1px solid white;
