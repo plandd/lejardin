@@ -76,7 +76,7 @@
                           ?>
                       </ul>
                       <ul class="inline-list no-margin right site-menu">
-                        <li><a href="#"><span class="icon-lejardim_home"></span></a></li>
+                        <li><a href="<?php echo home_url(); ?>"><span class="icon-lejardim_home"></span></a></li>
                         <?php
                           $defaults = array(
                             'theme_location'  => 'primary',

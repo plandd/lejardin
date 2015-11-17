@@ -16,6 +16,7 @@
         $galeria = get_field('suite_galeria');
         $itens = get_field('suite_itens');
         $active = ($titulo == $obj->post_title) ? 'active' : '';
+        $promo_id = uniqid();
     ?>
     <div class="a-suite <?php echo $active; ?> small-14" data-suite="<?php echo $titulo; ?>">
       <nav id="suites-rooms" class="small-14 large-9 abs cycle-slideshow"
@@ -68,9 +69,46 @@
               }
             ?>
           </ul>
+
           <p>
-            <a href="#" title="Sou Cliente VIP" class="button-primary">Sou Cliente VIP</a>
+            <?php if(get_field('suite_promo_regra',$post->ID) || get_field('suite_promo_validade',$post->ID)): ?>
+            <a href="#" title="Sou Cliente VIP" class="button-primary" data-reveal-id="promo-<?php echo $promo_id; ?>">Sou Cliente VIP</a>
+            <?php endif; ?>
           </p>
+          
+          <?php if(get_field('suite_promo_regra',$post->ID) || get_field('suite_promo_validade',$post->ID)): ?>
+          <div id="promo-<?php echo $promo_id; ?>" class="reveal-modal medium promo-voucher" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+            <div class="small-14 left voucher-info">
+              <header class="divide-40 text-center bg-secondary vip-header">
+                <h2 class="white">Voucher para a esta promoção</h2>
+              </header>
+
+              <article class="small-14 left text-center">
+                <h4 class="primary text-up">Nome da promoção</h4>
+                <h5 class="primary">Descrição: <?php echo get_field('suite_promo_desc',$post->ID); ?></h5>
+                <?php
+                  if(get_field('suite_promo_regra',$post->ID))
+                    printf('<p class="secondary no-margin font-medium">Condições: %s</p>',get_field('suite_promo_regra',$post->ID));
+
+                   if(get_field('suite_promo_validade',$post->ID))
+                    printf('<p class="secondary no-margin font-medium">Validade: %s</p>',get_field('suite_promo_validade',$post->ID));
+                ?>
+              </article>
+
+              <div class="small-14 left text-center">
+                <div class="divide-20"></div>
+                <p class="font-medium vapor">Para receber seu voucher, insira o email cadastrado no campo abaixo:</p>
+                <p class="no-margin">
+                  <form novalidate="novalidate" class="small-14 large-10 large-offset-2 columns text-center req-vip-voucher">
+                    <input type="email" title="Seu email" name="email" placeholder="Digite seu email aqui" required>
+                    <a href="#" class="button-primary" data-vouchervip="<?php echo get_field('suite_promo_desc',$post->ID); ?>">Gerar voucher</a>
+                  </form>
+                </p>
+              </div>
+            </div>
+            <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+          </div>
+          <?php endif; ?>
         </article>
       </nav>
     </div>

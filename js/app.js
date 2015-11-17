@@ -180,7 +180,7 @@ $('li','.site-menu').each(function (i) {
             },
             type: 'GET',
             beforeSend: function() {
-                console.log('enviado');
+                $("#cliente-vip > div").html('<div class="small-14 left text-center"><img src="'+ getData.urlDir +'images/loading.gif"></div>');
             },
             complete: function() {
                 console.log('completo');
@@ -241,7 +241,7 @@ $('li','.site-menu').each(function (i) {
                 },
                 type: 'GET',
                 beforeSend: function() {
-                    console.log('enviado');
+                    formEmail.html('<div class="small-14 left text-center"><img src="'+ getData.urlDir +'images/loading.gif"></div>');
                 },
                 complete: function() {
                     console.log('completo');
@@ -300,6 +300,7 @@ $('li','.site-menu').each(function (i) {
             });
         });
     };
+    send_form_vip();
 
     function insertVIPhtml() {
         $('a[data-promovip]').on('click',function(e) {
@@ -324,7 +325,7 @@ $('li','.site-menu').each(function (i) {
                 }
             });
         });
-    }
+    };
     
 })();
 

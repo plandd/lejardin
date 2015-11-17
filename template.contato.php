@@ -3,9 +3,39 @@
   * Template Name: Contato
   * @package WordPress
   */
+  if(isset($_POST['submited'])) {
+    $vNome = false;
+    $vEmail = false;
+    $vSexo = false;
+    $vMsg = false;
+
+    $nome = filter_var($_POST['nome'],FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST['email'],FILTER_VALIDATE_EMAIL);
+    $sexo = filter_var($_POST['sexo'],FILTER_SANITIZE_STRING);
+    $mensagem = filter_var($_POST['mensagem'],FILTER_SANITIZE_STRING);
+
+    if($nome && !empty($nome))
+      $vNome = true;
+
+    if($email && !empty($email))
+      $vEmail = true;
+
+    if($sexo && !empty($sexo))
+      $vSexo = true;
+    
+    if($mensagem && !empty($mensagem))
+      $vMsg = true;
+
+    if($vNome && $vEmail && $vSexo && $vMsg) {
+      $to = get_field('email_contato', 'option');
+      if($to && wp_mail( $to, '[Fale conosco] - Contato do site', "Nome: " . $nome . "\n" . "Mensagem: " . $mensagem . "\n" . "Sexo: " . $sexo . "\n" )) {
+        wp_redirect( home_url() );
+      }
+    }
+  }
+
   get_header();
 ?>
-
   <section id="contato" class="section-60 small-14 left">
     <div class="row text-center">
 
@@ -20,7 +50,7 @@
 
         <div class="form-contato small-14 medium-10 columns">
           
-          <form action="" method="post" class="small-14 left">
+          <form action="<?php the_permalink(); ?>" method="post" class="small-14 left">
             <p class="small-14 left no-margin">
               <label for="nome" class="primary left">Nome:</label>
               <input type="text" name="nome" id="nome" class="left" placeholder="DIGITE SEU NOME" title="Seu nome" required>
@@ -33,8 +63,8 @@
 
             <p class="small-14 left no-margin">
               <label class="primary left">Sexo:</label>
-              <input type="radio" id="masculino" name="sexo" class="left"><label class="iron left sexo" for="masculino">Masculino</label>
-              <input type="radio" id="feminino" name="sexo" class="left"><label class="iron left sexo" for="feminino">Feminino</label>
+              <input type="radio" id="masculino" name="sexo" value="masculino" class="left"><label class="iron left sexo" for="masculino">Masculino</label>
+              <input type="radio" id="feminino" name="sexo" value="feminino" class="left"><label class="iron left sexo" for="feminino">Feminino</label>
             </p>
 
             <p class="small-14 left no-margin">
@@ -47,7 +77,7 @@
             </p>
 
             <p class="small-14 left no-margin">
-              <button type="submit" class="button-primary">Enviar</button>
+              <button type="submit" class="button-primary" name="submited">Enviar</button>
             </p>
           </form>
 
@@ -57,10 +87,14 @@
           <h5 class="primary font-bold">Motel Le Jardin</h5>
           <div class="small-14 left text-left">
             <p class="font-small primary">
-              End.: Av. Otavio Alves de Lima, 45<br>
-              Bairro do Limão São Paulo - SP<br>
-              Fone: +55 (11) 3858-2654<br>
-              Email: <a href="mailto:correio@lejardin.com.br" class="secondary" title="Nosso email">correio@lejardin.com.br</a>
+              <?php
+                echo get_field('lejardin_endereco', 'option') . "<br>";
+                echo get_field('lejardin_cidade', 'option') . "<br>";
+              ?>
+              Fone: <?php
+                echo get_field('tel_reservas', 'option');
+              ?><br>
+              Email: <a href="mailto:<?php echo get_field('email_contato', 'option'); ?>" class="secondary" title="Nosso email"><?php echo get_field('email_contato', 'option'); ?></a>
             </p>
           </div>
           

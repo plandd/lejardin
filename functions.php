@@ -1,5 +1,5 @@
 <?php
-define('THEME_VERSION', '1.0.2');
+define('THEME_VERSION', '1.0.4');
 define('THEME_ICON', get_stylesheet_directory_uri() . '/images/icon.png');
 error_reporting(E_ERROR | E_PARSE);
 
@@ -39,6 +39,12 @@ if( function_exists('acf_add_options_page') ) {
     'menu_slug'   => 'opcoes-gerais',
     'capability'  => 'edit_posts',
     'redirect'    => false
+  ));
+
+  acf_add_options_sub_page(array(
+    'page_title'  => 'Seções da página principal',
+    'menu_title'  => 'Seções',
+    'parent_slug' => 'opcoes-gerais',
   ));
   
   acf_add_options_sub_page(array(
@@ -419,8 +425,8 @@ function plandd_voucher_vip() {
       "post_type" => 'voucher',
       "post_status" => 'publish'
     ));
-    update_field('voucher_nome', $promo, $contact_id);
-    update_field('voucher_tipo', $tipo, $contact_id);
+    update_field('vouchervip_nome', $promo, $contact_id);
+    update_field('vouchervip_tipo', $tipo, $contact_id);
 
     $page = get_page_by_title("Voucher individual");
     echo get_page_link( $page->ID ) . "?voucher=" . $voucher;

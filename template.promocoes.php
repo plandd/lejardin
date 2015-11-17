@@ -14,6 +14,10 @@
         <h3 class="primary text-up">Veja as promoções que o motel Le Jardin tem para você</h3>
       </header>
       
+      <?php
+        $promos = get_field('promo_lista', 'option');
+        if($promos):
+      ?>
       <div class="small-14 columns text-center rel promo-content">
         <nav id="promo-nav" class="small-12 large-10 d-iblock promo-slider cycle-slideshow"
           data-cycle-fx="scrollHorz" 
@@ -29,7 +33,6 @@
           data-cycle-swipe-fx=scrollHorz
         >
         <?php
-          $promos = get_field('promo_lista', 'option');
           foreach ($promos as $promo):
             $promo_id = uniqid();
         ?>
@@ -106,7 +109,12 @@
 
       </div>
       <div class="divide-40"></div>
-
+      <?php endif; ?>
+      
+      <?php
+        $promos = get_field('promovip_lista', 'option');
+        if($promos):
+      ?>
       <div class="small-14 columns text-center rel promo-content">
         <nav id="promo-nav" class="small-12 large-10 d-iblock promo-slider cycle-slideshow"
           data-cycle-fx="scrollHorz" 
@@ -122,7 +130,6 @@
           data-cycle-swipe-fx=scrollHorz
         >
         <?php
-          $promos = get_field('promovip_lista', 'option');
           foreach ($promos as $promo):
             $promo_id = uniqid();
         ?>
@@ -157,13 +164,13 @@
 
                 <article class="small-14 left text-center">
                   <h4 class="primary text-up">Nome da promoção</h4>
-                  <h5 class="primary">Descrição: <?php echo $promo['promo_desc']; ?></h5>
+                  <h5 class="primary">Descrição: <?php echo $promo['promovip_desc']; ?></h5>
                   <?php
-                    if($promo['promo_regra'])
-                      printf('<p class="secondary no-margin font-medium">Condições: %s</p>',$promo['promo_regra']);
+                    if($promo['promovip_regra'])
+                      printf('<p class="secondary no-margin font-medium">Condições: %s</p>',$promo['promovip_regra']);
 
-                     if($promo['promo_validade'])
-                      printf('<p class="secondary no-margin font-medium">Validade: %s</p>',$promo['promo_validade']);
+                     if($promo['promovip_validade'])
+                      printf('<p class="secondary no-margin font-medium">Validade: %s</p>',$promo['promovip_validade']);
                   ?>
                 </article>
 
@@ -173,7 +180,7 @@
                   <p class="no-margin">
                     <form novalidate="novalidate" class="small-14 large-10 large-offset-2 columns text-center req-vip-voucher">
                       <input type="email" title="Seu email" name="email" placeholder="Digite seu email aqui" required>
-                      <a href="#" class="button-primary" data-vouchervip="<?php echo $promo['promo_nome']; ?>">Gerar voucher</a>
+                      <a href="#" class="button-primary" data-vouchervip="<?php echo $promo['promovip_nome']; ?>">Gerar voucher</a>
                     </form>
                   </p>
                 </div>
@@ -200,6 +207,7 @@
         </a>
 
       </div>
+      <?php endif; ?>
 
     </div>
   </section>

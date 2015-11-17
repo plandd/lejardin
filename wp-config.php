@@ -16,16 +16,16 @@
 
 // ** Configurações do MySQL - Você pode pegar essas informações com o serviço de hospedagem ** //
 /** O nome do banco de dados do WordPress */
-define('DB_NAME', 'lejardin1');
+define('DB_NAME', 'plandc');
 
 /** Usuário do banco de dados MySQL */
-define('DB_USER', 'lejardin1');
+define('DB_USER', 'plandc');
 
 /** Senha do banco de dados MySQL */
-define('DB_PASSWORD', 'lejardin000@');
+define('DB_PASSWORD', 'lj20727lj');
 
 /** nome do host do MySQL */
-define('DB_HOST', 'mysql01.lejardin.com.br');
+define('DB_HOST', 'mysql02.plandc.hospedagemdesites.ws');
 
 /** Conjunto de caracteres do banco de dados a ser usado na criação das tabelas. */
 define('DB_CHARSET', 'utf8mb4');

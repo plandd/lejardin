@@ -1,17 +1,155 @@
 <?php
   get_header();
 
-    include get_stylesheet_directory() . "/includes/sections/home.destaques.php";
-    
-    include get_stylesheet_directory() . "/includes/sections/home.suites.php";
+    switch (get_field('secao_1', 'option')) {
+    	case 'vazio':
+    		echo '';
+    		break;
 
-    //include get_stylesheet_directory() . "/includes/sections/home.links.php";
-    
-    include get_stylesheet_directory() . "/includes/sections/home.depoimentos.php";
+    	case 'destaques':
+    		include get_stylesheet_directory() . "/includes/sections/home.destaques.php";
+    		break;
 
-    include get_stylesheet_directory() . "/includes/sections/cliente-vip.php";
-    
-    include get_stylesheet_directory() . "/includes/sections/home.mapa.php";
+    	case 'suites':
+    		include get_stylesheet_directory() . "/includes/sections/home.suites.php";
+    		break;
+
+    	case 'depoimentos':
+    		include get_stylesheet_directory() . "/includes/sections/home.depoimentos.php";
+    		break;
+
+    	case 'cliente':
+    		include get_stylesheet_directory() . "/includes/sections/cliente-vip.php";
+    		break;
+
+    	case 'mapa':
+    		include get_stylesheet_directory() . "/includes/sections/home.mapa.php";
+    		break;
+    	
+    	default:
+    		# code...
+    		break;
+    }
+
+    switch (get_field('secao_2', 'option')) {
+    	case 'vazio':
+    		echo '';
+    		break;
+
+    	case 'destaques':
+    		include get_stylesheet_directory() . "/includes/sections/home.destaques.php";
+    		break;
+
+    	case 'suites':
+    		include get_stylesheet_directory() . "/includes/sections/home.suites.php";
+    		break;
+
+    	case 'depoimentos':
+    		include get_stylesheet_directory() . "/includes/sections/home.depoimentos.php";
+    		break;
+
+    	case 'cliente':
+    		include get_stylesheet_directory() . "/includes/sections/cliente-vip.php";
+    		break;
+
+    	case 'mapa':
+    		include get_stylesheet_directory() . "/includes/sections/home.mapa.php";
+    		break;
+    	
+    	default:
+    		# code...
+    		break;
+    }
+
+    switch (get_field('secao_3', 'option')) {
+    	case 'vazio':
+    		echo '';
+    		break;
+
+    	case 'destaques':
+    		include get_stylesheet_directory() . "/includes/sections/home.destaques.php";
+    		break;
+
+    	case 'suites':
+    		include get_stylesheet_directory() . "/includes/sections/home.suites.php";
+    		break;
+
+    	case 'depoimentos':
+    		include get_stylesheet_directory() . "/includes/sections/home.depoimentos.php";
+    		break;
+
+    	case 'cliente':
+    		include get_stylesheet_directory() . "/includes/sections/cliente-vip.php";
+    		break;
+
+    	case 'mapa':
+    		include get_stylesheet_directory() . "/includes/sections/home.mapa.php";
+    		break;
+    	
+    	default:
+    		# code...
+    		break;
+    }
+
+    switch (get_field('secao_4', 'option')) {
+    	case 'vazio':
+    		echo '';
+    		break;
+
+    	case 'destaques':
+    		include get_stylesheet_directory() . "/includes/sections/home.destaques.php";
+    		break;
+
+    	case 'suites':
+    		include get_stylesheet_directory() . "/includes/sections/home.suites.php";
+    		break;
+
+    	case 'depoimentos':
+    		include get_stylesheet_directory() . "/includes/sections/home.depoimentos.php";
+    		break;
+
+    	case 'cliente':
+    		include get_stylesheet_directory() . "/includes/sections/cliente-vip.php";
+    		break;
+
+    	case 'mapa':
+    		include get_stylesheet_directory() . "/includes/sections/home.mapa.php";
+    		break;
+    	
+    	default:
+    		# code...
+    		break;
+    }
+
+    switch (get_field('secao_5', 'option')) {
+    	case 'vazio':
+    		echo '';
+    		break;
+
+    	case 'destaques':
+    		include get_stylesheet_directory() . "/includes/sections/home.destaques.php";
+    		break;
+
+    	case 'suites':
+    		include get_stylesheet_directory() . "/includes/sections/home.suites.php";
+    		break;
+
+    	case 'depoimentos':
+    		include get_stylesheet_directory() . "/includes/sections/home.depoimentos.php";
+    		break;
+
+    	case 'cliente':
+    		include get_stylesheet_directory() . "/includes/sections/cliente-vip.php";
+    		break;
+
+    	case 'mapa':
+    		include get_stylesheet_directory() . "/includes/sections/home.mapa.php";
+    		break;
+    	
+    	default:
+    		# code...
+    		break;
+    }
 
   get_footer();
 ?>
