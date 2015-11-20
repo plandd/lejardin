@@ -13,12 +13,13 @@
         global $post;
         $titulos[] = get_the_title( $post->ID );
         $titulo = get_the_title( $post->ID );
+        $_titulo = explode(' ', $titulo);
         $galeria = get_field('suite_galeria');
         $itens = get_field('suite_itens');
         $active = ($titulo == $obj->post_title) ? 'active' : '';
         $promo_id = uniqid();
     ?>
-    <div class="a-suite <?php echo $active; ?> small-14" data-suite="<?php echo $titulo; ?>">
+    <div class="a-suite <?php echo $active; ?> small-14" data-suite="<?php echo $_titulo[1]; ?>">
       <nav id="suites-rooms" class="small-14 large-9 abs cycle-slideshow"
         data-cycle-fx="fade" 
         data-cycle-timeout="6000"
@@ -84,7 +85,7 @@
               </header>
 
               <article class="small-14 left text-center">
-                <h4 class="primary text-up">Nome da promoção</h4>
+                <h4 class="primary text-up"><?php the_title(); ?></h4>
                 <h5 class="primary">Descrição: <?php echo get_field('suite_promo_desc',$post->ID); ?></h5>
                 <?php
                   if(get_field('suite_promo_regra',$post->ID))
@@ -101,7 +102,7 @@
                 <p class="no-margin">
                   <form novalidate="novalidate" class="small-14 large-10 large-offset-2 columns text-center req-vip-voucher">
                     <input type="email" title="Seu email" name="email" placeholder="Digite seu email aqui" required>
-                    <a href="#" class="button-primary" data-vouchervip="<?php echo get_field('suite_promo_desc',$post->ID); ?>">Gerar voucher</a>
+                    <a href="#" class="button-primary" data-vouchervip="<?php echo get_the_title( $post->ID ) . " - " . get_field('suite_promo_desc',$post->ID); ?>">Gerar voucher</a>
                   </form>
                 </p>
               </div>
@@ -125,8 +126,9 @@
           </li>
           <?php
             foreach ($titulos as $titulo) {
+              $_titulo = explode(' ', $titulo);
               $active = ($titulo == $obj->post_title) ? 'active' : '';
-              printf('<li><a href="#" title="" class="%s">%s</a></li>',$active,$titulo);
+              printf('<li><a href="#" title="" class="%s">%s</a></li>',$active,$_titulo[1]);
             }
           ?>
         </ul>

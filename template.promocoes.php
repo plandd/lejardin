@@ -43,7 +43,7 @@
             </header>
 
             <a href="#" data-reveal-id="promo-<?php echo $promo_id; ?>" class="img small-14 large-12 right rel" title="<?php echo $promo['promo_nome']; ?>" data-thumb="<?php echo $promo['promo_img']; ?>">
-              <p>Aniversário mais gostoso</p>
+              <p><?php echo $promo['promo_nome']; ?></p>
             </a>
             
             <figcaption class="small-14 large-10 text-left right">
@@ -66,7 +66,7 @@
                 </header>
 
                 <article class="small-14 left text-center">
-                  <h4 class="primary text-up">Nome da promoção</h4>
+                  <h4 class="primary text-up"><?php echo $promo['promo_nome']; ?></h4>
                   <h5 class="primary">Descrição: <?php echo $promo['promo_desc']; ?></h5>
                   <?php
                     if($promo['promo_regra'])
@@ -140,7 +140,7 @@
             </header>
 
             <a href="#" data-reveal-id="promo-<?php echo $promo_id; ?>" class="img small-14 large-12 right rel" title="<?php echo $promo['promovip_nome']; ?>" data-thumb="<?php echo $promo['promovip_img']; ?>">
-              <p>Aniversário mais gostoso</p>
+              <p><?php echo $promo['promovip_nome']; ?></p>
             </a>
             
             <figcaption class="small-14 large-10 text-left right">
@@ -163,7 +163,7 @@
                 </header>
 
                 <article class="small-14 left text-center">
-                  <h4 class="primary text-up">Nome da promoção</h4>
+                  <h4 class="primary text-up"><?php echo $promo['promovip_nome']; ?></h4>
                   <h5 class="primary">Descrição: <?php echo $promo['promovip_desc']; ?></h5>
                   <?php
                     if($promo['promovip_regra'])
@@ -180,7 +180,7 @@
                   <p class="no-margin">
                     <form novalidate="novalidate" class="small-14 large-10 large-offset-2 columns text-center req-vip-voucher">
                       <input type="email" title="Seu email" name="email" placeholder="Digite seu email aqui" required>
-                      <a href="#" class="button-primary" data-vouchervip="<?php echo $promo['promovip_nome']; ?>">Gerar voucher</a>
+                      <a href="#" class="button-primary" data-vouchervip="<?php echo $promo['promovip_nome'] ." - ". $promo['promovip_desc']; ?>">Gerar voucher</a>
                     </form>
                   </p>
                 </div>

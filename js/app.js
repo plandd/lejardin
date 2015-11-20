@@ -146,26 +146,7 @@ $('li','.site-menu').each(function (i) {
 })();
 
 //Suites
-(function() {
-    $("a","#nav-suites").on('click',function(e) {
-        e.preventDefault();
-        var titulo = $(this).text();
 
-        $(this).addClass('active')
-        .parents('li')
-        .siblings('li')
-        .find('a').removeClass('active');
-
-        $('.a-suite').each(function() {
-            var dt = $(this).data('suite');
-            
-            if(dt == titulo) {
-                $(this).addClass('active')
-                .siblings('.a-suite').removeClass('active');
-            }
-        });
-    });
-})();
 
 //Cliente VIP
 (function() {

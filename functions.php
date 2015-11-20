@@ -28,7 +28,7 @@ function plandd_acf_dir( $dir ) {
  * (custom meta post)
  */
 include_once( get_stylesheet_directory() . '/includes/acf-pro/acf.php' );
-define( 'ACF_LITE' , true );
+//define( 'ACF_LITE' , true );
 //include_once( get_stylesheet_directory() . '/includes/acf/preconfig.php' );
 
 if( function_exists('acf_add_options_page') ) {
@@ -425,8 +425,8 @@ function plandd_voucher_vip() {
       "post_type" => 'voucher',
       "post_status" => 'publish'
     ));
-    update_field('vouchervip_nome', $promo, $contact_id);
-    update_field('vouchervip_tipo', $tipo, $contact_id);
+    update_field('voucher_nome', $promo, $contact_id);
+    update_field('voucher_tipo', $tipo, $contact_id);
 
     $page = get_page_by_title("Voucher individual");
     echo get_page_link( $page->ID ) . "?voucher=" . $voucher;
